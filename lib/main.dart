@@ -110,65 +110,65 @@ class VirtualKeyboard extends StatelessWidget {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final keys = [
-      ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
-      ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-      ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-      ['z', 'x', 'c', 'v', 'b', 'n', 'm', '@', '.'],
-      ['⌫', ' ', '✓'],
-    ];
+    @override
+    Widget build(BuildContext context) {
+      final keys = [
+        ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
+        ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+        ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+        ['z', 'x', 'c', 'v', 'b', 'n', 'm', '@', '.'],
+        ['⌫', ' ', '✓'],
+      ];
 
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
-      decoration: BoxDecoration(
-        color: Colors.grey[200],
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: keys.map((row) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 2),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: row.map((key) {
-                final isSpecial = key == '⌫' || key == '✓';
-                final isSpace = key == ' ';
-                
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 1.5),
-                  child: Material(
-                    color: isSpecial ? Colors.blue[400] : Colors.white,
-                    borderRadius: BorderRadius.circular(4),
-                    child: InkWell(
-                      onTap: () => _onKeyPress(key),
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
+        decoration: BoxDecoration(
+          color: Colors.grey[200],
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: keys.map((row) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: row.map((key) {
+                  final isSpecial = key == '⌫' || key == '✓';
+                  final isSpace = key == ' ';
+                  
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 1.5),
+                    child: Material(
+                      color: isSpecial ? Colors.blue[400] : Colors.white,
                       borderRadius: BorderRadius.circular(4),
-                      child: Container(
-                        width: isSpace ? 100 : 28,
-                        height: 34,
-                        alignment: Alignment.center,
-                        child: Text(
-                          isSpace ? 'espace' : key,
-                          style: TextStyle(
-                            fontSize: isSpecial ? 16 : 14,
-                            fontWeight: FontWeight.w500,
-                            color: isSpecial ? Colors.white : Colors.black87,
+                      child: InkWell(
+                        onTap: () => _onKeyPress(key),
+                        borderRadius: BorderRadius.circular(4),
+                        child: Container(
+                          width: isSpace ? 100 : 28,
+                          height: 34,
+                          alignment: Alignment.center,
+                          child: Text(
+                            isSpace ? 'espace' : key,
+                            style: TextStyle(
+                              fontSize: isSpecial ? 16 : 14,
+                              fontWeight: FontWeight.w500,
+                              color: isSpecial ? Colors.white : Colors.black87,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                );
-              }).toList(),
-            ),
-          );
-        }).toList(),
-      ),
-    );
+                  );
+                }).toList(),
+              ),
+            );
+          }).toList(),
+        ),
+      );
+    }
   }
-}
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
